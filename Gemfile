@@ -25,3 +25,6 @@ gem 'libxml-ruby', '=0.9.7'
 # group :test do
 #   gem 'webrat'
 # end
+group :test do
+  gem "rspec-rails", ">= 2.0.0.beta.13"
+end
