@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.beta3'
+gem 'rails', '3.0.0.beta4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,6 +12,9 @@ gem 'libxml-ruby', '=0.9.7'
 
 # Deploy with Capistrano
 # gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'
