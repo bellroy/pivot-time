@@ -29,5 +29,6 @@ gem 'mysql', '>=2.8.1'
 #   gem 'webrat'
 # end
 group :test do
-  gem "rspec-rails", ">= 2.0.0.beta.13"
+  gem 'rspec-rails', '>= 2.0.0.beta.13'
+  gem 'machinist'
 end
