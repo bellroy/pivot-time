@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100705215524) do
+ActiveRecord::Schema.define(:version => 20100705231745) do
+
+  create_table "pivotal_events", :force => true do |t|
+    t.string   "type"
+    t.integer  "task_id"
+    t.datetime "created_at"
+  end
+
+  add_index "pivotal_events", ["created_at"], :name => "index_pivotal_events_on_created_at"
+  add_index "pivotal_events", ["task_id"], :name => "index_pivotal_events_on_task_id"
+  add_index "pivotal_events", ["type"], :name => "index_pivotal_events_on_type"
 
   create_table "tasks", :force => true do |t|
     t.string   "type"
