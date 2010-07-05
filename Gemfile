@@ -31,4 +31,5 @@ gem 'mysql', '>=2.8.1'
 group :test do
   gem 'rspec-rails', '>= 2.0.0.beta.13'
   gem 'machinist'
+  gem 'faker'
 end
