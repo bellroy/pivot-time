@@ -6,6 +6,7 @@ gem 'rails', '3.0.0.beta4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'libxml-ruby', '=0.9.7'
+gem 'mysql', '>=2.8.1'
 
 # Use unicorn as the web server
 # gem 'unicorn'
