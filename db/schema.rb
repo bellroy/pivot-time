@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(:version => 20100705231745) do
   create_table "stories", :force => true do |t|
     t.string   "type"
     t.string   "name"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "accepted_at"
     t.datetime "delivered_at"
@@ -40,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20100705231745) do
   add_index "stories", ["delivered_at"], :name => "index_stories_on_delivered_at"
   add_index "stories", ["finished_at"], :name => "index_stories_on_finished_at"
   add_index "stories", ["restarted_at"], :name => "index_stories_on_restarted_at"
+  add_index "stories", ["started_at"], :name => "index_stories_on_started_at"
+  add_index "stories", ["state"], :name => "index_stories_on_state"
   add_index "stories", ["type"], :name => "index_stories_on_type"
   add_index "stories", ["updated_at"], :name => "index_stories_on_updated_at"
 
