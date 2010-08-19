@@ -1,4 +1,4 @@
-Perspective::Application.routes.draw do |map|
+PivotTime::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
