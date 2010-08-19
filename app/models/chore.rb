@@ -1,2 +1,0 @@
-class Chore < Task
-end
