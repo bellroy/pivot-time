@@ -3,7 +3,7 @@ class PivotalEvent::StoryUpdate < PivotalEvent::Base
     self.story = Story.find_or_create_by_id(story_id)
     story.update_attributes(
       :started_at => created_at,
-      :state      => 'started'
+      :state      => state
     )
   end
 end

@@ -64,24 +64,27 @@ describe PivotalEvent::Base do
       end
     end
 
-    describe "to start a story" do
-      before do
-        @time = "2010/03/27 18:09:44 UTC"
-        @desc = %(Peter Hollows started "something he's going to finish")
-        @xml = ERB.new(
-          File.read("#{Rails.root}/spec/fixtures/pivotal/story_update.xml.erb")
-        ).result(binding)
+    %w(start finish restart reject accept).each do |state|
+      describe "to #{state} a story" do
+        before do
+          @time   = "2010/03/27 18:09:44 UTC"
+          @state  = "#{state}ed"
+          @desc   = %(Peter Hollows #{@state} "a difficult story")
+          @xml = ERB.new(
+            File.read("#{Rails.root}/spec/fixtures/pivotal/story_update.xml.erb")
+          ).result(binding)
 
-        @story = Story.make(:id => 1234)
-        @event = PivotalEvent::Base.handle(@xml)
-      end
+          @story = Story.make(:id => 1234)
+          @event = PivotalEvent::Base.handle(@xml)
+        end
 
-      it_should_behave_like "a pivotal event"
+        it_should_behave_like "a pivotal event"
 
-      it "marks the story as started" do
-        @story.reload
-        @story.state.should == 'started'
-        @story.started_at.should == Time.parse(@time)
+        it "marks the story as #{state}ed" do
+          @story.reload
+          @story.state.should == @state
+          @story.started_at.should == Time.parse(@time)
+        end
       end
     end
 

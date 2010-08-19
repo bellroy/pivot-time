@@ -14,11 +14,13 @@ ActiveRecord::Schema.define(:version => 20100705231745) do
   create_table "pivotal_events", :force => true do |t|
     t.string   "type"
     t.integer  "story_id"
+    t.string   "state"
     t.datetime "created_at"
     t.text     "description"
   end
 
   add_index "pivotal_events", ["created_at"], :name => "index_pivotal_events_on_created_at"
+  add_index "pivotal_events", ["state"], :name => "index_pivotal_events_on_state"
   add_index "pivotal_events", ["story_id"], :name => "index_pivotal_events_on_story_id"
   add_index "pivotal_events", ["type"], :name => "index_pivotal_events_on_type"
 
