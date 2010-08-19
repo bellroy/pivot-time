@@ -58,7 +58,11 @@ describe PivotalEvent::Base do
       it_should_behave_like "a pivotal event"
 
       it "marks the story as deleted" do
-        @story.reload.deleted_at.should == Time.parse(@time)
+        @story.reload
+        @story.state.should == 'deleted'
+        @story.deleted_at.should == Time.parse(@time)
+      end
+    end
       end
     end
 
