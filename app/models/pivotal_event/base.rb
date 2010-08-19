@@ -3,6 +3,10 @@ class PivotalEvent::Base < ActiveRecord::Base
 
   belongs_to :story
 
+  validates_presence_of :story_id
+
+  after_create :affect_story
+
   class << self
     def handle(xml)
       activity = extract_activity(xml)
@@ -12,7 +16,11 @@ class PivotalEvent::Base < ActiveRecord::Base
     end
 
     def handle_activity(activity)
-      raise "You need to override self.handle_activity(activity) in #{self}"
+      create(
+        :story_id     => activity['stories']['story']['id']['__content__'],
+        :created_at   => Time.parse(activity['occurred_at']['__content__']),
+        :description  => activity['description']['__content__']
+      )
     end
 
     def extract_activity(xml)

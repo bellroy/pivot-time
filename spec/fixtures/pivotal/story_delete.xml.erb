@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity>
+  <id type="integer">26142800</id>
+  <version type="integer">5</version>
+  <event_type>story_delete</event_type>
+  <occurred_at type="datetime"><%= @time %></occurred_at>
+  <author>Peter Hollows</author>
+  <project_id type="integer">1337</project_id>
+  <description><%= Rack::Utils.escape_html @desc %></description>
+  <stories>
+    <story>
+      <id type="integer">1234</id>
+      <url>http://www.pivotaltracker.com/services/v3/projects/1337/stories/1234</url>
+    </story>
+  </stories>
+</activity>

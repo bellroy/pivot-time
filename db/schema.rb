@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -27,8 +27,29 @@ ActiveRecord::Schema.define(:version => 20100705231745) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "finished_at"
+    t.datetime "accepted_at"
+    t.datetime "delivered_at"
+    t.datetime "deleted_at"
+    t.datetime "restarted_at"
   end
 
+  add_index "stories", ["accepted_at"], :name => "index_stories_on_accepted_at"
+  add_index "stories", ["created_at"], :name => "index_stories_on_created_at"
+  add_index "stories", ["deleted_at"], :name => "index_stories_on_deleted_at"
+  add_index "stories", ["delivered_at"], :name => "index_stories_on_delivered_at"
+  add_index "stories", ["finished_at"], :name => "index_stories_on_finished_at"
+  add_index "stories", ["restarted_at"], :name => "index_stories_on_restarted_at"
   add_index "stories", ["type"], :name => "index_stories_on_type"
+  add_index "stories", ["updated_at"], :name => "index_stories_on_updated_at"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["type"], :name => "index_tasks_on_type"
 
 end
