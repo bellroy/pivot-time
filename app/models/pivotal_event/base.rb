@@ -7,11 +7,11 @@ class PivotalEvent::Base < ActiveRecord::Base
 
   attr_accessor :activity
 
-  def after_initialize
-    init_with_activity if activity
-  end
+  after_initialize :init_with_activity
 
   def init_with_activity
+    return unless activity
+
     state = activity['stories']['story']['current_state']['__content__'] rescue nil
     self.attributes = {
       'story_id'    => activity['stories']['story']['id']['__content__'],
@@ -19,6 +19,10 @@ class PivotalEvent::Base < ActiveRecord::Base
       'description' => activity['description']['__content__'],
       'state'       => state
     }
+  end
+
+  def affect_story
+    raise NotImplemented, "Override PivotalEvent::Base#affect_story in #{self.class.name}"
   end
 
   def self.create_from_xml(xml)
