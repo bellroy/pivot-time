@@ -1,0 +1,16 @@
+common: &common
+  adapter: mysql
+  username: root
+  password: 
+
+development:
+  <<: *common
+  database: pivottime_development
+
+test:
+  <<: *common
+  database: pivottime_test
+
+events:
+  <<: *common
+  database: dashboard_dev
