@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails',        '3.0.0.rc'
 
-gem 'libxml-ruby',  '0.9.7'
 gem 'mysql',        '2.8.1'
 
 group :test do

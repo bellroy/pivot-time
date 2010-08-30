@@ -36,7 +36,6 @@ GEM
       abstract (>= 1.0.0)
     faker (0.3.1)
     i18n (0.4.1)
-    libxml-ruby (0.9.7)
     machinist (1.0.6)
     mail (2.2.5)
       activesupport (>= 2.3.6)
@@ -90,7 +89,6 @@ PLATFORMS
 
 DEPENDENCIES
   faker
-  libxml-ruby (= 0.9.7)
   machinist
   mysql (= 2.8.1)
   rails (= 3.0.0.rc)
