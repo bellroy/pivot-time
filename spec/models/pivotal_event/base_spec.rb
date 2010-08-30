@@ -66,7 +66,7 @@ describe PivotalEvent::Base do
       end
     end
 
-    %w(start finish restart reject accept).each do |state|
+    %w(start finish restart reject accept deliver).each do |state|
       describe "to #{state} a story" do
         before do
           @time   = "2010/03/27 18:09:44 UTC"
