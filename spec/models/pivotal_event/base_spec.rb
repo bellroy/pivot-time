@@ -19,6 +19,8 @@ describe PivotalEvent::Base do
       it "records the time the event took place" do
         @event.created_at.should == Time.parse(@time)
       end
+
+      it "serializes the handled XML"
     end
 
     describe "to create a story" do
