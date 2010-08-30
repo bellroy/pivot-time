@@ -29,7 +29,7 @@ describe PivotalEvent::Base do
           File.read("#{Rails.root}/spec/fixtures/pivotal/story_create.xml.erb")
         ).result(binding)
 
-        @event = PivotalEvent::Base.handle(@xml)
+        @event = PivotalEvent::Base.create_from_xml(@xml)
       end
 
       it_should_behave_like "a pivotal event"
@@ -52,7 +52,7 @@ describe PivotalEvent::Base do
         ).result(binding)
 
         @story = Story.make(:id => 1234)
-        @event = PivotalEvent::Base.handle(@xml)
+        @event = PivotalEvent::Base.create_from_xml(@xml)
       end
 
       it_should_behave_like "a pivotal event"
@@ -75,7 +75,7 @@ describe PivotalEvent::Base do
           ).result(binding)
 
           @story = Story.make(:id => 1234)
-          @event = PivotalEvent::Base.handle(@xml)
+          @event = PivotalEvent::Base.create_from_xml(@xml)
         end
 
         it_should_behave_like "a pivotal event"

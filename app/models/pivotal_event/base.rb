@@ -3,31 +3,37 @@ class PivotalEvent::Base < ActiveRecord::Base
 
   belongs_to :story
 
-  validates_presence_of :story_id
-
   after_create :affect_story
 
-  class << self
-    def handle(xml)
-      activity = extract_activity(xml)
-      event_type = activity['event_type']['__content__']
-      klass = "pivotal_event/#{event_type}".classify.constantize
-      return klass.handle_activity(activity)
-    end
+  attr_accessor :activity
 
-    def handle_activity(activity)
-      state = activity['stories']['story']['current_state']['__content__'] rescue nil
-      create(
-        :story_id     => activity['stories']['story']['id']['__content__'],
-        :created_at   => Time.parse(activity['occurred_at']['__content__']),
-        :description  => activity['description']['__content__'],
-        :state        => state
-      )
-    end
+  def after_initialize
+    init_with_activity if activity
+  end
 
-    def extract_activity(xml)
-      doc = ActiveSupport::XmlMini.parse(xml)
-      return doc['activity']
-    end
+  def init_with_activity
+    state = activity['stories']['story']['current_state']['__content__'] rescue nil
+    self.attributes = {
+      'story_id'    => activity['stories']['story']['id']['__content__'],
+      'created_at'  => Time.parse(activity['occurred_at']['__content__']),
+      'description' => activity['description']['__content__'],
+      'state'       => state
+    }
+  end
+
+  def self.create_from_xml(xml)
+    activity = parse(xml)
+    event_type = activity['event_type']['__content__']
+    klass = "pivotal_event/#{event_type}".classify.constantize
+
+    event = klass.new(:activity => activity)
+    event.save
+
+    event
+  end
+
+  def self.parse(xml)
+    doc = ActiveSupport::XmlMini.parse(xml)
+    return doc['activity']
   end
 end
