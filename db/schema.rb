@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20100831063602) do
   add_index "pivotal_events", ["type"], :name => "index_pivotal_events_on_type"
 
   create_table "stories", :force => true do |t|
-    t.string   "type"
+    t.string   "story_type"
     t.string   "name"
     t.string   "state"
     t.datetime "created_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20100831063602) do
   add_index "stories", ["restarted_at"], :name => "index_stories_on_restarted_at"
   add_index "stories", ["started_at"], :name => "index_stories_on_started_at"
   add_index "stories", ["state"], :name => "index_stories_on_state"
-  add_index "stories", ["type"], :name => "index_stories_on_type"
+  add_index "stories", ["story_type"], :name => "index_stories_on_type"
   add_index "stories", ["updated_at"], :name => "index_stories_on_updated_at"
 
   create_table "tasks", :force => true do |t|
