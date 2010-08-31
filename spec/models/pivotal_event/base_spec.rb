@@ -19,7 +19,7 @@ describe PivotalEvent::Base do
       end
 
       it "records the time the event took place" do
-        @event.created_at.should == Time.parse(@time)
+        @event.occurred_at.should == Time.parse(@time)
       end
 
       # TODO
@@ -41,10 +41,6 @@ describe PivotalEvent::Base do
 
       it "creates a new StoryCreate pivotal event" do
         @event.class.should == PivotalEvent::StoryCreate
-      end
-
-      it "records when the story was created" do
-        @event.story.created_at.should == Time.parse(@time)
       end
     end
 
