@@ -22,6 +22,8 @@ describe PivotalEvent::Base do
         @event.occurred_at.should == Time.parse(@time)
       end
 
+      it "makes an associated Dashboard::Entry"
+
       # TODO
       #it "serializes the handled XML"
     end
