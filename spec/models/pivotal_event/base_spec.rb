@@ -58,10 +58,8 @@ describe PivotalEvent::Base do
 
       it_should_behave_like "a pivotal event"
 
-      it "marks the story as deleted" do
-        @story.reload
-        @story.state.should == 'deleted'
-        @story.deleted_at.should == Time.parse(@time)
+      it "creates a new StoryDelete pivotal event" do
+        @event.class.should == PivotalEvent::StoryDelete
       end
     end
 
@@ -81,10 +79,8 @@ describe PivotalEvent::Base do
 
         it_should_behave_like "a pivotal event"
 
-        it "marks the story as #{state}ed" do
-          @story.reload
-          @story.state.should == @state
-          @story.started_at.should == Time.parse(@time)
+        it "creates a new StoryUpdate pivotal event" do
+          @event.class.should == PivotalEvent::StoryUpdate
         end
       end
     end
