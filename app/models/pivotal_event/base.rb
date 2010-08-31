@@ -3,10 +3,9 @@ class PivotalEvent::Base < ActiveRecord::Base
 
   belongs_to :story
 
-  after_create :affect_story
-
   attr_accessor :activity
 
+  after_create :affect_story
   after_initialize :init_with_activity
 
   def init_with_activity

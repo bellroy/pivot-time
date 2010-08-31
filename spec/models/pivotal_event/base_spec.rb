@@ -4,12 +4,14 @@ describe PivotalEvent::Base do
   describe "handling XML posts" do
 
     shared_examples_for "a pivotal event" do
-      it "associates itself with a story" do
-        @event.story.should be_present
-      end
+      describe "and its story" do
+        it "associates itself with a story" do
+          @event.story.should be_present
+        end
 
-      it "associates itself to a story with the same ID as the Pivotal Tracker story" do
-        @event.story.id.should == 1234
+        it "associates itself with a story with the same ID as the Pivotal Tracker story" do
+          @event.story.id.should == 1234
+        end
       end
 
       it "records the message sent in the Pivotal XML" do
@@ -20,7 +22,8 @@ describe PivotalEvent::Base do
         @event.created_at.should == Time.parse(@time)
       end
 
-      it "serializes the handled XML"
+      # TODO
+      #it "serializes the handled XML"
     end
 
     describe "to create a story" do
