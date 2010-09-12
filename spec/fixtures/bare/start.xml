@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <activity>
-  <id type="integer">28202336</id>
-  <version type="integer">7</version>
+  <id type="integer">28205980</id>
+  <version type="integer">16</version>
   <event_type>story_update</event_type>
-  <occurred_at type="datetime">2010/09/12 01:10:49 UTC</occurred_at>
+  <occurred_at type="datetime">2010/09/12 05:09:34 UTC</occurred_at>
   <author>Matthew Fallshaw</author>
   <project_id type="integer">112986</project_id>
-  <description>Matthew Fallshaw started &quot;a story&quot;</description>
+  <description>Matthew Fallshaw started &quot;a new story&quot;</description>
   <stories>
     <story>
-      <id type="integer">4941223</id>
-      <url>http://www.pivotaltracker.com/services/v3/projects/112986/stories/4941223</url>
+      <id type="integer">5128795</id>
+      <url>http://www.pivotaltracker.com/services/v3/projects/112986/stories/5128795</url>
       <current_state>started</current_state>
     </story>
   </stories>

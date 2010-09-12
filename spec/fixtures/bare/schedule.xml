@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <activity>
-  <id type="integer">28206006</id>
-  <version type="integer">20</version>
+  <id type="integer">28205977</id>
+  <version type="integer">14</version>
   <event_type>story_update</event_type>
-  <occurred_at type="datetime">2010/09/12 05:10:23 UTC</occurred_at>
+  <occurred_at type="datetime">2010/09/12 05:09:25 UTC</occurred_at>
   <author>Matthew Fallshaw</author>
   <project_id type="integer">112986</project_id>
   <description>Matthew Fallshaw edited &quot;a new story&quot;</description>
@@ -11,8 +11,7 @@
     <story>
       <id type="integer">5128795</id>
       <url>http://www.pivotaltracker.com/services/v3/projects/112986/stories/5128795</url>
-      <accepted_at type="datetime"></accepted_at>
-      <current_state>delivered</current_state>
+      <current_state>unstarted</current_state>
     </story>
   </stories>
 </activity>
