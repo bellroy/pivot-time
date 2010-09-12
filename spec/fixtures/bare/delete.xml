@@ -1,0 +1,16 @@
+?xml version="1.0" encoding="UTF-8"?>
+<activity>
+  <id type="integer">27154403</id>
+  <version type="integer">5</version>
+  <event_type>story_delete</event_type>
+  <occurred_at type="datetime">2010/08/31 05:53:21 UTC</occurred_at>
+  <author>Matthew Fallshaw</author>
+  <project_id type="integer">112986</project_id>
+  <description>Matthew Fallshaw deleted &quot;story title&quot;</description>
+  <stories>
+    <story>
+      <id type="integer">4941136</id>
+      <url>http://www.pivotaltracker.com/services/v3/projects/112986/stories/4941136</url>
+    </story>
+  </stories>
+</activity>

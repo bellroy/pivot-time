@@ -1,0 +1,22 @@
+<activity>
+  <id type="integer">28202341</id>
+  <version type="integer">10</version>
+  <event_type>story_update</event_type>
+  <occurred_at type="datetime">2010/09/12 01:11:00 UTC</occurred_at>
+  <author>Matthew Fallshaw</author>
+  <project_id type="integer">112986</project_id>
+  <description>Matthew Fallshaw rejected &quot;a story&quot; with comments: &quot;whimsy&quot;</description>
+  <stories>
+    <story>
+      <id type="integer">4941223</id>
+      <url>http://www.pivotaltracker.com/services/v3/projects/112986/stories/4941223</url>
+      <current_state>rejected</current_state>
+      <notes>
+        <note>
+          <id type="integer">2441204</id>
+          <text>whimsy</text>
+        </note>
+      </notes>
+    </story>
+  </stories>
+</activity>

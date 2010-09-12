@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity>
+  <id type="integer">26885023</id>
+  <version type="integer">632</version>
+  <event_type>story_update</event_type>
+  <occurred_at type="datetime">2010/08/27 04:52:28 UTC</occurred_at>
+  <author>Simon Mustoe</author>
+  <project_id type="integer">88426</project_id>
+  <description>Simon Mustoe accepted &quot;Clean up species controller&quot;</description>
+  <stories>
+    <story>
+      <id type="integer">4653017</id>
+      <url>http://www.pivotaltracker.com/services/v3/projects/88426/stories/4653017</url>
+      <accepted_at type="datetime">2010/08/27 04:52:28 UTC</accepted_at>
+      <current_state>accepted</current_state>
+    </story>
+  </stories>
+</activity>
