@@ -3,7 +3,16 @@ require 'spec_helper'
 describe Story do
   describe "linked dashboard Task," do
     describe "when linked task exists," do
-      it "should have dashboard_task"
+      it "should have dashboard_task" do
+        task = Dashboard::Task.create(:name => "t:prj website 12345")
+
+        story = Story.new
+        story.id = 12345
+
+        story.dashboard_task.should == task
+
+        task.destroy
+      end
     end
     describe "when linked task does not exist," do
       it "should create linked dashboard_task"
