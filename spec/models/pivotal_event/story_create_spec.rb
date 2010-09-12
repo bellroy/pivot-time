@@ -21,8 +21,8 @@ describe PivotalEvent::StoryCreate do
         @event.story.story_type.should == "feature"
       end
       
-      it "records when the story was created" do
-        @event.story.created_at.should == Time.parse(@time)
+      it "records when the story was started" do
+        @event.story.story_created_at.should == Time.parse(@time)
       end
 
       it "marks the story as unscheduled" do
