@@ -1,8 +1,8 @@
 class Project
-  PROJECTS = YAML.load(File.join(Rails.root, 'config', 'projects.yml'))
+  PROJECTS = YAML.load_file(File.join(Rails.root, 'config', 'projects.yml'))
 
   def self.by_pivotal_id(id)
-    new(PROJECTS.find { |name, attributes| attributes['pivotal_project_id'] == id })
+    new(*PROJECTS.find { |name, attributes| attributes['pivotal_project_id'] == id })
   end
 
   def initialize(name, attributes)

@@ -2,6 +2,9 @@ class Story < ActiveRecord::Base
   has_many :pivotal_events, :class_name => 'PivotalEvent::Base', :dependent => :destroy
   # has_many :dashboard_tasks
 
+  after_save :ensure_dashboard_task_exists, :if => :needs_dashboard_task?
+  after_save :ensure_dashboard_event_exists, :if => :needs_dashboard_event?
+
   STATES = {
     :create     => :unscheduled,
     :schedule   => :unstarted,
@@ -55,6 +58,22 @@ class Story < ActiveRecord::Base
     dashboard_task or create_dashboard_task
   end
 
-  def create_dashboard_event
+  def needs_dashboard_task?
+    # Anything after it's been started
+    %w(start finish deliver accept reject restart).include? state
+  end
+
+  def needs_dashboard_event?
+    # Only if we're going to bill for this story
+    %w(deliver accept).include? state
+  end
+
+  def ensure_dashboard_task_exists
+    find_or_create_dashboard_task
+  end
+
+  def ensure_dashboard_event_exists
+    return if dashboard_task.entries.count > 0
+    dashboard_task.entries.create_with_zero_time
   end
 end

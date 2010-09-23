@@ -1,10 +1,15 @@
 require 'spec_helper'
 
 describe Story do
+  before(:each) do
+    Project.stub!(:by_pivotal_id).and_return(Project.new(42, 'default_slimtimer_prefix' => 't:pants website'))
+  end
+
   describe "linked dashboard Task," do
     describe "when linked task exists," do
       it "should have dashboard_task" do
-        task = Dashboard::Task.create(:name => "t:prj website 12345")
+        #task = Dashboard::Task.create(:name => "t:prj website 12345")
+        Dashboard::Task.stub(:where).and_return([task = mock_model(Dashboard::Task)])
 
         story = Story.new
         story.id = 12345
@@ -50,6 +55,31 @@ describe Story do
         @story.send(meth.to_sym).should == a_time
       end
     end
+  end
 
+  describe "dashboard integration" do
+    it "should not make a dashboard task when it's not started" do
+      Dashboard::Task.should_not_receive(:create)
+      Story.create(:pivotal_project_id => 42, :state => 'create')
+    end
+
+    it "should make an dashboard task when it's started" do
+      Dashboard::Task.should_receive(:create)
+      Story.create(:pivotal_project_id => 42, :state => 'start')
+    end
+
+    it "should not make a dashboard event when it's not delivered or accepted" do
+      Dashboard::Task.stub(:where).and_return([task = mock_model(Dashboard::Task)])
+      task.stub(:entries).and_return(entries = [])
+      entries.should_not_receive(:create_with_zero_time)
+      Story.create(:pivotal_project_id => 42, :state => 'start')
+    end
+
+    it "should make a dashboard event when it's delivered or accepted" do
+      Dashboard::Task.stub(:where).and_return([task = mock_model(Dashboard::Task)])
+      task.stub(:entries).and_return(entries = [])
+      entries.should_receive(:create_with_zero_time)
+      Story.create(:pivotal_project_id => 42, :state => 'deliver')
+    end
   end
 end
