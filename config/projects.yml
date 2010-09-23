@@ -1,0 +1,27 @@
+jasper:
+  pivotal_project_id: 25033
+  default_slimtimer_prefix: "t:jas system"
+  tagged_slimtimer_prefixes:
+    kando: "t:jas kando"
+    dc:    "t:jas dc"
+
+plandeliver:
+  pivotal_project_id: 40441
+  default_slimtimer_prefix: "t:plan website"
+
+jasperdocs:
+  pivotal_project_id: 94290
+  default_slimtimer_prefix: "t:jas docs"
+
+radiopaedia:
+  pivotal_project_id: 69618
+  default_slimtimer_prefix: "t:rad website"
+
+bellroy:
+  pivotal_project_id: 86041
+  default_slimtimer_prefix: "t:bell website"
+
+wildiaries:
+  pivotal_project_id: 88426
+  default_slimtimer_prefix: "i:wild website"
+
