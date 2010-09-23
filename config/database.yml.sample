@@ -6,11 +6,17 @@ common: &common
 development:
   <<: *common
   database: pivottime_development
+  events_db: events_dev
 
 test:
   <<: *common
   database: pivottime_test
+  events_db: events_test
 
-events:
+events_dev:
   <<: *common
   database: dashboard_dev
+
+events_test:
+  <<: *common
+  database: dashboard_test
