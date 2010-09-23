@@ -15,7 +15,7 @@ class Story < ActiveRecord::Base
     :unstart    => :unstarted,
     :delete     => :deleted
   }
-  
+
   STATES.each do |action, state|
     meth = action.to_s.match(/e$/) ? "story_#{action}d_at" : "story_#{action}ed_at"
     define_method(meth) do
@@ -28,8 +28,33 @@ class Story < ActiveRecord::Base
     tasks = Dashboard::Task.where("name like '%#{id}%'")
     if tasks.size == 1
       tasks.first
-    else
+    elsif tasks.size > 1
       raise "Multiple tasks found - you have a dashboard data problem"
+    else
+      nil
     end
+  end
+
+  def project
+    Project.by_pivotal_id(pivotal_project_id)
+  end
+
+  def slimtimer_task_name
+    if task = dashboard_task
+      task.name
+    else
+      "#{project.slimtimer_task_prefix} #{id}"
+    end
+  end
+
+  def create_dashboard_task
+    Dashboard::Task.create(:name => slimtimer_task_name)
+  end
+
+  def find_or_create_dashboard_task
+    dashboard_task or create_dashboard_task
+  end
+
+  def create_dashboard_event
   end
 end

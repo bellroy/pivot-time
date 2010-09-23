@@ -15,7 +15,19 @@ describe Story do
       end
     end
     describe "when linked task does not exist," do
-      it "should create linked dashboard_task"
+      before(:each) do
+        @project = Project.new('pants', { 'default_slimtimer_prefix' => 't:pants website' })
+        Project.stub(:by_pivotal_id).and_return(@project)
+      end
+
+      it "should create linked dashboard_task" do
+        story = Story.new
+        story.id = 12345
+        story.pivotal_project_id = 42
+
+        Dashboard::Task.should_receive(:create).with(:name => 't:pants website 12345')
+        story.create_dashboard_task
+      end
     end
   end
 
@@ -25,7 +37,7 @@ describe Story do
     event_type[:delete] = PivotalEvent::StoryDelete
 
     before do
-      @story = Story.create
+      @story = Story.create(:pivotal_project_id => 42)
     end
 
     Story::STATES.each do |action, state|
