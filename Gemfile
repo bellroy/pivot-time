@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails',          '3.0.0'
 gem 'mysql',          '2.8.1'
+gem 'httparty',       '~> 0.6'
 
 group :development do
   gem 'rspactor',     '>= 0.7.beta.2'
