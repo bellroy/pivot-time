@@ -33,10 +33,10 @@ class SlimtimerApi
 
   def post(path, data)
     options = {
-      :headers => { "Accept" => "application/x-yaml", "Content-Type" => "application/x-yaml" },
+      :headers => { "Accept" => "application/xml", "Content-Type" => "application/xml" },
       :base_uri => "http://slimtimer.com/users/#{@user_id}",
-      :format => :text,
-      :body => base_query.merge(data).stringify_keys.to_yaml
+      :query => base_query,
+      :body => data
     }
     self.class.post(path, options)
   end

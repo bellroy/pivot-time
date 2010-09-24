@@ -14,6 +14,7 @@ class PivotalEvent::Base < ActiveRecord::Base
     state = activity['stories']['story']['current_state']['__content__'] rescue nil
     self.attributes = {
       'story_id'    => activity['stories']['story']['id']['__content__'],
+      'project_id'  => activity['project_id']['__content__'],
       'occurred_at' => Time.parse(activity['occurred_at']['__content__']),
       'description' => activity['description']['__content__'],
       'state'       => state

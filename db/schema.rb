@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923043632) do
+ActiveRecord::Schema.define(:version => 20100924065644) do
 
   create_table "pivotal_events", :force => true do |t|
     t.string   "type"
@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(:version => 20100923043632) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pivotal_project_id", :null => false
+    t.integer  "pivotal_story_id",   :null => false
   end
 
   add_index "stories", ["pivotal_project_id"], :name => "index_stories_on_pivotal_project_id"
+  add_index "stories", ["pivotal_story_id"], :name => "index_stories_on_pivotal_story_id"
   add_index "stories", ["state"], :name => "index_stories_on_state"
   add_index "stories", ["story_type"], :name => "index_stories_on_type"
 
