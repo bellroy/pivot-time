@@ -25,10 +25,20 @@ class SlimtimerApi
   def get(path, query = {})
     options = {
       :headers => { "Accept" => "application/xml" },
-      :base_uri => "http://www.slimtimer.com/users/#{@user_id}",
+      :base_uri => "http://slimtimer.com/users/#{@user_id}",
       :query => base_query.merge(query)
     }
     self.class.get(path, options)
+  end
+
+  def post(path, data)
+    options = {
+      :headers => { "Accept" => "application/x-yaml", "Content-Type" => "application/x-yaml" },
+      :base_uri => "http://slimtimer.com/users/#{@user_id}",
+      :format => :text,
+      :body => base_query.merge(data).stringify_keys.to_yaml
+    }
+    self.class.post(path, options)
   end
 
   def tasks(show_completed = 'yes', role = 'owner,coworker')
@@ -76,6 +86,6 @@ class SlimtimerApi
   end
 
   def base_query
-    @base_query ||= { :api_key => @api_key, :access_token => @access_token }
+    @base_query ||= { :api_key => @api_key.to_str, :access_token => "#{@access_token}" }
   end
 end

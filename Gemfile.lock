@@ -107,6 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder
   faker
   httparty (~> 0.6)
   machinist
