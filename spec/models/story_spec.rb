@@ -58,28 +58,35 @@ describe Story do
   #end
 
   describe "dashboard integration" do
+    before do
+      @valid_story_attributes = {
+        :pivotal_project_id => 42,
+        :pivotal_story_id => 1
+      }
+    end
+
     it "should not make a dashboard task when it's not started" do
       Dashboard::Task.should_not_receive(:create)
-      Story.create(:pivotal_project_id => 42, :state => 'create')
+      Story.create(@valid_story_attributes.merge :state => 'create')
     end
 
     it "should make an dashboard task when it's started" do
       Dashboard::Task.should_receive(:create)
-      Story.create(:pivotal_project_id => 42, :state => 'start')
+      Story.create(@valid_story_attributes.merge :state => 'start')
     end
 
     it "should not make a dashboard event when it's not delivered or accepted" do
       Dashboard::Task.stub(:where).and_return([task = mock_model(Dashboard::Task)])
       task.stub(:entries).and_return(entries = [])
       entries.should_not_receive(:create_with_zero_time)
-      Story.create(:pivotal_project_id => 42, :state => 'start')
+      Story.create(@valid_story_attributes.merge :state => 'start')
     end
 
     it "should make a dashboard event when it's delivered or accepted" do
       Dashboard::Task.stub(:where).and_return([task = mock_model(Dashboard::Task)])
       task.stub(:entries).and_return(entries = [])
       entries.should_receive(:create_with_zero_time)
-      Story.create(:pivotal_project_id => 42, :state => 'deliver')
+      Story.create(@valid_story_attributes.merge :state => 'deliver')
     end
   end
 end

@@ -10,7 +10,7 @@ describe PivotalEvent::Base do
         end
 
         it "associates itself with a story with the same ID as the Pivotal Tracker story" do
-          @event.story.id.should == 1234
+          @event.story.pivotal_story_id.should == 1234
         end
       end
 
@@ -54,7 +54,7 @@ describe PivotalEvent::Base do
           File.read("#{Rails.root}/spec/fixtures/pivotal/story_delete.xml.erb")
         ).result(binding)
 
-        @story = Story.make(:id => 1234)
+        @story = Story.make(:id => 1234, :pivotal_project_id => 1337, :pivotal_story_id => 1234)
         @event = PivotalEvent::Base.create_from_xml(@xml)
       end
 
@@ -75,7 +75,7 @@ describe PivotalEvent::Base do
             File.read("#{Rails.root}/spec/fixtures/pivotal/story_update.xml.erb")
           ).result(binding)
 
-          @story = Story.make(:id => 1234)
+          @story = Story.make(:id => 1234, :pivotal_project_id => 1337, :pivotal_story_id => 1234)
           @event = PivotalEvent::Base.create_from_xml(@xml)
         end
 
