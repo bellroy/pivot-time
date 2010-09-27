@@ -16,11 +16,8 @@ describe PivotalEvent::StoryDelete do
       @event.state.should == "deleted"
     end
 
-    describe "a pivotal event and its story," do
-      it "marks the story as deleted" do
-        @event.story.state.should == 'deleted'
-        @event.story.story_deleted_at.should == Time.parse(@time)
-      end
-    end
+    #it "records when the story was deleted" do
+    #  @event.story.story_deleted_at.should == Time.parse(@time)
+    #end
   end
 end
